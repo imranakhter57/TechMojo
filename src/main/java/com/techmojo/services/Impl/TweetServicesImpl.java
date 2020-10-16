@@ -22,6 +22,10 @@ public class TweetServicesImpl  implements TweetServices {
     private static final Logger logger = LogManager.getLogger(TweetServicesImpl.class);
     public static Map<String,Integer> hashtagTracker = new HashMap<>();
 
+    /**
+     * This method is to extract hashtags from tweet
+     * @param tweet
+     */
     private void hashtagExtractor(String tweet){
         Pattern hashtagPattern = Pattern.compile("#(\\S+)");
         Matcher mat = hashtagPattern.matcher(tweet);
@@ -31,12 +35,22 @@ public class TweetServicesImpl  implements TweetServices {
         }
     }
 
+    /**
+     * This method is to sort the tags based on number of occurence of hashtags
+     */
     private void sortHashtags(){
         hashtagTracker =  hashtagTracker.entrySet().stream().
                 sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).
                 collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                         (e1, e2) -> e1, LinkedHashMap::new));
     }
+
+    /**
+     * This method will add hashtag to static variable hashtag tracker since we dont have DB access
+     * else it would be done using db
+     * @param tweet
+     * @return
+     */
     @Override
     public List<String> getTrendingHashtag(String tweet) {
         List<String> response = new ArrayList<>();

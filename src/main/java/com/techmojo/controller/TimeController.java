@@ -20,6 +20,11 @@ public class TimeController {
     @Autowired
     TimeServices timeServices;
 
+    /**
+     * @param transactions
+     * @param rawHeaders
+     * @return
+     */
     @PostMapping(value = "/getAvgTime")
     public ResponseEntity<String> getAvgTime(@RequestBody String transactions, @RequestHeader HttpHeaders rawHeaders){
         logger.info("In getAvgTime");

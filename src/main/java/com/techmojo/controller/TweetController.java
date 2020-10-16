@@ -23,6 +23,11 @@ public class TweetController {
     @Autowired
     TweetServices tweetServices;
 
+    /**
+     * @param tweet
+     * @param rawHeaders
+     * @return
+     */
     @PostMapping(value = "/getTrendingHashtag")
     public ResponseEntity<List<String>> getTrendingHashtag(@RequestBody String tweet, @RequestHeader HttpHeaders rawHeaders){
         logger.info("In getTrendingHashtag");

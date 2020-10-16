@@ -22,6 +22,12 @@ public class TimeServicesImpl implements TimeServices {
     public static Map<String,Long> timeTracker = new HashMap<>();
     public  static List<Long> timeDiff = new ArrayList<>();
 
+
+    /**
+     * @param transactions
+     * @return
+     * @throws ParseException
+     */
     @Override
     public String getAvgTransactionTime(String transactions) throws ParseException {
         DateFormat format = new SimpleDateFormat("yyyy - MM - dd h:mm a");
