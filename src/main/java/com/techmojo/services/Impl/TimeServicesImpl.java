@@ -23,7 +23,7 @@ public class TimeServicesImpl implements TimeServices {
     public  static List<Long> timeDiff = new ArrayList<>();
 
 
-    /**
+    /** We are using static variable to store time and calculate avg as we are not using db
      * @param transactions
      * @return
      * @throws ParseException
